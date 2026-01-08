@@ -1,0 +1,120 @@
+{
+    "keyboard.dispatch": "keyCode",
+
+    "vim.normalModeKeyBindingsNonRecursive": [
+    // ====== General (как в LazyVim: <leader><space>, <leader>, <leader>/, <leader>:, <leader>e) ======
+    { "before": ["<leader>", "<space>"], "commands": ["workbench.action.quickOpen"] },        // find files
+    { "before": ["<leader>", ","],        "commands": ["workbench.action.showAllEditors"] }, // buffers
+    { "before": ["<leader>", "/"],        "commands": ["workbench.action.findInFiles"] },    // grep
+    { "before": ["<leader>", ":"],        "commands": ["workbench.action.showCommands"] },   // command palette
+    { "before": ["<leader>", "e"],        "commands": ["workbench.view.explorer"] },         // explorer
+    { "before": ["<leader>", "E"],        "commands": ["workbench.view.explorer"] },
+
+    // ====== Files (f...) ======
+    { "before": ["<leader>", "f", "f"], "commands": ["workbench.action.quickOpen"] },
+    { "before": ["<leader>", "f", "r"], "commands": ["workbench.action.openRecent"] },
+    { "before": ["<leader>", "f", "n"], "commands": ["workbench.action.files.newUntitledFile"] },
+    { "before": ["<leader>", "f", "t"], "commands": ["workbench.action.terminal.toggleTerminal"] },
+    { "before": ["<leader>", "f", "b"], "commands": ["workbench.action.showAllEditors"] },
+
+    // ====== Buffers (b...) ======
+    // LazyVim: <S-h>/<S-l> = prev/next buffer. В VSCodeVim удобнее мапать на H/L (капс).
+    { "before": ["H"], "commands": ["workbench.action.previousEditorInGroup"] },
+    { "before": ["L"], "commands": ["workbench.action.nextEditorInGroup"] },
+
+    { "before": ["[", "b"], "commands": ["workbench.action.previousEditorInGroup"] },
+    { "before": ["]", "b"], "commands": ["workbench.action.nextEditorInGroup"] },
+
+    { "before": ["<leader>", "b", "b"], "commands": ["workbench.action.openPreviousRecentlyUsedEditorInGroup"] },
+    { "before": ["<leader>", "`"],      "commands": ["workbench.action.openPreviousRecentlyUsedEditorInGroup"] },
+
+    { "before": ["<leader>", "b", "d"], "commands": ["workbench.action.closeActiveEditor"] },
+    { "before": ["<leader>", "b", "o"], "commands": ["workbench.action.closeOtherEditors"] },
+    { "before": ["<leader>", "b", "l"], "commands": ["workbench.action.closeEditorsToTheLeft"] },
+    { "before": ["<leader>", "b", "r"], "commands": ["workbench.action.closeEditorsToTheRight"] },
+    { "before": ["<leader>", "b", "p"], "commands": ["workbench.action.keepEditor"] }, // pin
+
+    // ====== Search (s...) ======
+    { "before": ["<leader>", "s", "g"], "commands": ["workbench.action.findInFiles"] },
+    { "before": ["<leader>", "s", "s"], "commands": ["workbench.action.gotoSymbol"] },      // symbols in file
+    { "before": ["<leader>", "s", "S"], "commands": ["workbench.action.showAllSymbols"] },  // symbols in workspace
+    { "before": ["<leader>", "s", "d"], "commands": ["workbench.actions.view.problems"] },  // diagnostics/problems
+
+    // search word under cursor -> then open Find in Files (похоже на LazyVim <leader>sw)
+    { "before": ["<leader>", "s", "w"], "commands": ["editor.action.addSelectionToNextFindMatch", "workbench.action.findInFiles"] },
+
+    // ====== Code/LSP (c...) ======
+    { "before": ["<leader>", "c", "a"], "commands": ["editor.action.quickFix"] },         // code action
+    { "before": ["<leader>", "c", "A"], "commands": ["editor.action.sourceAction"] },     // source action
+    { "before": ["<leader>", "c", "f"], "commands": ["editor.action.formatDocument"] },   // format
+    { "before": ["<leader>", "c", "r"], "commands": ["editor.action.rename"] },           // rename
+    { "before": ["<leader>", "c", "d"], "commands": ["editor.action.showHover"] },        // hover (часто включает диагностику)
+
+    // diagnostics nav (как [d ]d / [q ]q у LazyVim)
+    { "before": ["]", "d"], "commands": ["editor.action.marker.next"] },
+    { "before": ["[", "d"], "commands": ["editor.action.marker.prev"] },
+    { "before": ["]", "q"], "commands": ["editor.action.marker.nextInFiles"] },
+    { "before": ["[", "q"], "commands": ["editor.action.marker.prevInFiles"] },
+
+    // ====== Trouble-ish (x...) -> Problems ======
+    { "before": ["<leader>", "x", "x"], "commands": ["workbench.actions.view.problems"] },
+    { "before": ["<leader>", "x", "q"], "commands": ["workbench.actions.view.problems"] },
+
+    // ====== Git (g...) ======
+    { "before": ["<leader>", "g", "s"], "commands": ["workbench.view.scm"] },
+    { "before": ["<leader>", "g", "c"], "commands": ["git.commit"] },
+    { "before": ["<leader>", "g", "p"], "commands": ["git.push"] },
+    { "before": ["<leader>", "g", "P"], "commands": ["git.pull"] },
+    { "before": ["<leader>", "g", "f"], "commands": ["git.fetch"] },
+    { "before": ["<leader>", "g", "y"], "commands": ["git.sync"] },
+    { "before": ["<leader>", "g", "b"], "commands": ["git.blame.toggleEditorDecoration"] },
+    { "before": ["<leader>", "g", "d"], "commands": ["git.viewChanges"] },
+    { "before": ["<leader>", "g", "S"], "commands": ["git.stash"] },
+    { "before": ["<leader>", "g", "C"], "commands": ["git.checkout"] },
+
+    // ====== Windows / navigation (w...) ======
+    // ctrl+h/j/k/l — перемещение фокуса по UI (группы/панели)
+    { "before": ["<c-h>"], "commands": ["workbench.action.navigateLeft"] },
+    { "before": ["<c-j>"], "commands": ["workbench.action.navigateDown"] },
+    { "before": ["<c-k>"], "commands": ["workbench.action.navigateUp"] },
+    { "before": ["<c-l>"], "commands": ["workbench.action.navigateRight"] },
+
+    // LazyVim: <leader>- и <leader>| splits
+    { "before": ["<leader>", "-"], "commands": ["workbench.action.splitEditorDown"] },
+    { "before": ["<leader>", "|"], "commands": ["workbench.action.splitEditorRight"] },
+
+    // ====== UI toggles (u...) ======
+    { "before": ["<leader>", "u", "w"], "commands": ["editor.action.toggleWordWrap"] },
+    { "before": ["<leader>", "u", "t"], "commands": ["workbench.action.toggleSidebarVisibility"] },
+    { "before": ["<leader>", "u", "z"], "commands": ["workbench.action.toggleZenMode"] },
+
+    // ====== Tabs-ish (<leader><tab>...) ======
+    { "before": ["<leader>", "<tab>", "]"], "commands": ["workbench.action.nextEditorInGroup"] },
+    { "before": ["<leader>", "<tab>", "["], "commands": ["workbench.action.previousEditorInGroup"] },
+    { "before": ["<leader>", "<tab>", "d"], "commands": ["workbench.action.closeActiveEditor"] },
+    { "before": ["<leader>", "<tab>", "o"], "commands": ["workbench.action.closeOtherEditors"] },
+    { "before": ["<leader>", "<tab>", "<tab>"], "commands": ["workbench.action.splitEditorRight"] },
+
+    // Diabled arrows for every mode
+  //  { "before": ["<up>"], "after": [] },
+  //  { "before": ["<down>"], "after": [] },
+  //  { "before": ["<left>"], "after": [] },
+  //  { "before": ["<right>"], "after": [] }
+  ],
+
+  // Diabled arrows for every mode
+  "vim.insertModeKeyBindingsNonRecursive": [
+  //  { "before": ["<up>"], "after": [] },
+  //  { "before": ["<down>"], "after": [] },
+  //  { "before": ["<left>"], "after": [] },
+  //  { "before": ["<right>"], "after": [] }
+  ],
+
+  // Diabled arrows for every mode
+  "vim.visualModeKeyBindingsNonRecursive": [
+  //  { "before": ["<up>"], "after": [] },
+  //  { "before": ["<down>"], "after": [] },
+  //  { "before": ["<left>"], "after": [] },
+  //  { "before": ["<right>"], "after": [] }
+]
+}

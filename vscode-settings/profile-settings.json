@@ -1,0 +1,15 @@
+{
+    "workbench.sideBar.location": "right",
+    "explorer.compactFolders": false,
+    "editor.lineNumbers": "relative",
+    "vim.foldfix": true,
+    "vim.enableNeovim": true,
+    "vim.ignorecase": false,
+    "vim.leader": "<space>",
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "[cpp]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    }
+}
